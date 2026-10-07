@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ec">
+  <meta name="description" content="Suku Kata — belajar membaca suku kata Bahasa Melayu untuk kanak-kanak.">
+  <title>Suku Kata — Jom Belajar Membaca!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app" id="app">
+
+    <!-- ===================== HOME SCREEN (Step 1 — locked) ===================== -->
+    <section class="screen screen--home" id="screen-home" aria-labelledby="home-title">
+
+      <!-- Decorative background elements (purely visual) -->
+      <div class="decor" aria-hidden="true">
+        <svg class="decor__item decor--star-a" viewBox="0 0 24 24" focusable="false">
+          <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"
+                fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+
+        <svg class="decor__item decor--star-b" viewBox="0 0 24 24" focusable="false">
+          <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"
+                fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+
+        <svg class="decor__item decor--dots" viewBox="0 0 40 40" focusable="false">
+          <circle cx="8" cy="10" r="4" fill="currentColor"/>
+          <circle cx="27" cy="7" r="3" fill="currentColor"/>
+          <circle cx="20" cy="27" r="5" fill="currentColor"/>
+        </svg>
+
+        <svg class="decor__item decor--pencil" viewBox="0 0 64 64" focusable="false">
+          <g transform="rotate(-35 32 32)">
+            <rect x="8" y="26" width="38" height="12" rx="2" fill="#ffd166"/>
+            <rect x="8" y="26" width="7" height="12" rx="2" fill="#f4a7b9"/>
+            <rect x="14" y="26" width="3" height="12" fill="#c9ccd4"/>
+            <path d="M46 26 L58 32 L46 38 Z" fill="#f3d9b1"/>
+            <path d="M54 30 L58 32 L54 34 Z" fill="#1f2a44"/>
+          </g>
+        </svg>
+      </div>
+
+      <header class="hero">
+        <div class="mascot" aria-hidden="true">
+          <svg class="mascot__tiger" viewBox="0 0 200 200" focusable="false">
+            <!-- Ears -->
+            <circle cx="50" cy="56" r="26" fill="#f08a2c"/>
+            <circle cx="150" cy="56" r="26" fill="#f08a2c"/>
+            <circle cx="50" cy="56" r="13" fill="#ffe1c2"/>
+            <circle cx="150" cy="56" r="13" fill="#ffe1c2"/>
+            <!-- Head -->
+            <ellipse cx="100" cy="110" rx="78" ry="68" fill="#f5952f"/>
+            <!-- Forehead stripes -->
+            <path d="M100 42 C95 54 95 62 100 70 C105 62 105 54 100 42 Z" fill="#33292b"/>
+            <path d="M78 47 C77 57 81 63 88 67 C87 59 84 52 78 47 Z" fill="#33292b"/>
+            <path d="M122 47 C123 57 119 63 112 67 C113 59 116 52 122 47 Z" fill="#33292b"/>
+            <!-- Cheek stripes -->
+            <path d="M23 98 C33 99 42 103 48 109 C39 110 30 106 23 98 Z" fill="#33292b"/>
+            <path d="M25 120 C33 119 40 121 46 125 C38 128 31 126 25 120 Z" fill="#33292b"/>
+            <path d="M177 98 C167 99 158 103 152 109 C161 110 170 106 177 98 Z" fill="#33292b"/>
+            <path d="M175 120 C167 119 160 121 154 125 C162 128 169 126 175 120 Z" fill="#33292b"/>
+            <!-- Muzzle -->
+            <ellipse cx="72" cy="142" rx="32" ry="25" fill="#fff6ea"/>
+            <ellipse cx="128" cy="142" rx="32" ry="25" fill="#fff6ea"/>
+            <!-- Blush -->
+            <circle cx="58" cy="118" r="7" fill="#ff8f8f" opacity="0.45"/>
+            <circle cx="142" cy="118" r="7" fill="#ff8f8f" opacity="0.45"/>
+            <!-- Eyes -->
+            <circle cx="76" cy="102" r="9" fill="#33292b"/>
+            <circle cx="124" cy="102" r="9" fill="#33292b"/>
+            <circle cx="79" cy="99" r="3" fill="#ffffff"/>
+            <circle cx="127" cy="99" r="3" fill="#ffffff"/>
+            <!-- Nose -->
+            <path d="M89 125 Q100 118 111 125 Q105 135 100 136 Q95 135 89 125 Z" fill="#4a2c2a"/>
+            <!-- Mouth -->
+            <path d="M100 136 V143 M100 143 Q92 152 83 146 M100 143 Q108 152 117 146"
+                  fill="none" stroke="#4a2c2a" stroke-width="3.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="hero__text">
+          <h1 class="app-title" id="home-title" tabindex="-1">
+            <span class="app-title__word app-title__word--a">SUKU</span>
+            <span class="app-title__word app-title__word--b">KATA</span>
+          </h1>
+          <p class="app-subtitle">
+            <span class="app-subtitle__text">Jom Belajar Membaca!</span>
+          </p>
+        </div>
+      </header>
+
+      <h2 class="visually-hidden">Pilih tahap</h2>
+
+      <div class="level-grid" id="level-grid">
+
+        <!-- Level: 2 Suku Kata -->
+        <button
+          type="button"
+          class="level-card level-card--two"
+          data-level="2"
+          aria-label="2 Suku Kata. Contoh: BA, PA."
+        >
+          <span class="level-card__syllables" aria-hidden="true">
+            <span class="chip chip--a">BA</span>
+            <span class="plus">+</span>
+            <span class="chip chip--b">PA</span>
+          </span>
+
+          <span class="level-card__label" aria-hidden="true">
+            <span class="level-card__number">2</span>
+            <span class="level-card__text">Suku Kata</span>
+            <span class="level-card__go">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M9 6.5v11l8.5-5.5z" fill="currentColor"/></svg>
+            </span>
+          </span>
+        </button>
+
+        <!-- Level: 3 Suku Kata -->
+        <button
+          type="button"
+          class="level-card level-card--three"
+          data-level="3"
+          aria-label="3 Suku Kata. Contoh: KE, RE, TA."
+        >
+          <span class="level-card__syllables" aria-hidden="true">
+            <span class="chip chip--a">KE</span>
+            <span class="plus">+</span>
+            <span class="chip chip--b">RE</span>
+            <span class="plus">+</span>
+            <span class="chip chip--c">TA</span>
+          </span>
+
+          <span class="level-card__label" aria-hidden="true">
+            <span class="level-card__number">3</span>
+            <span class="level-card__text">Suku Kata</span>
+            <span class="level-card__go">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M9 6.5v11l8.5-5.5z" fill="currentColor"/></svg>
+            </span>
+          </span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ===================== GAME SCREEN ===================== -->
+    <section class="screen screen--game" id="screen-game" aria-labelledby="game-title" hidden>
+
+      <div class="topbar">
+        <button type="button" class="back-button" id="back-button">
+          <svg class="back-button__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Kembali</span>
+        </button>
+
+        <h2 class="level-pill" id="game-title" tabindex="-1">
+          <span class="level-pill__number" id="game-level-number">2</span>
+          <span class="level-pill__text">Suku Kata</span>
+        </h2>
+      </div>
+
+      <div class="game-stage">
+        <div class="almari" id="almari" role="group" aria-label="Almari">
+          <div class="almari__body">
+
+            <!-- INTERIOR: fixed, always present behind the doors -->
+            <div class="almari__interior">
+              <div class="game-panel" id="game-panel">
+
+                <header class="game-panel__header">
+                  <h3 class="game-panel__title">Padankan Suku Kata &amp; Gambar</h3>
+                  <p class="game-panel__subtitle" id="game-subtitle">Klik suku kata pertama + kedua + gambar!</p>
+                </header>
+
+                <div class="panel-card">
+                  <div class="how-to">
+                    <p class="how-to__title">Cara Bermain:</p>
+                    <ol class="how-to__list" id="how-to-list"></ol>
+                  </div>
+                  <div class="status-row">
+                    <span class="status-row__count">Siap: <strong id="ready-count">0</strong>/<span id="ready-total">6</span></span>
+                    <span class="status-row__hint" id="status-hint">Pilih suku kata pertama</span>
+                  </div>
+                  <p class="panel-note">Gambar ada di pintu almari! <span aria-hidden="true">📷</span></p>
+                </div>
+
+                <!-- FEEDBACK AREA: updates with every step of the game -->
+                <div class="answer-card">
+                  <div class="feedback" id="feedback" data-tone="start" role="status" aria-live="polite">
+                    <span class="feedback__emoji" id="feedback-emoji" aria-hidden="true">👆</span>
+                    <p class="feedback__formula" id="feedback-formula" hidden></p>
+                    <p class="feedback__word" id="feedback-word" hidden></p>
+                    <p class="feedback__title" id="feedback-title">Pilih suku kata pertama!</p>
+                    <p class="feedback__text" id="feedback-text">Jom cuba! 🌟</p>
+                    <p class="feedback__extra" id="feedback-extra" hidden></p>
+                    <button type="button" class="feedback__action" id="feedback-action" hidden>Main lagi 🔄</button>
+                  </div>
+                </div>
+
+                <div class="syllable-section">
+                  <p class="section-label">Suku Kata:</p>
+                  <div class="syllable-grid" id="syllable-grid"></div>
+                </div>
+
+                <div class="panel-card">
+                  <p class="section-label">Dipilih:</p>
+                  <div class="selection-row" id="selection-row"></div>
+                </div>
+
+                <div class="panel-actions">
+                  <button type="button" class="clear-button" id="clear-button">Padam</button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- LEFT DOOR: hinged on its left outer edge -->
+            <div class="door door--left" id="door-left">
+              <div class="door__face door__face--front" aria-hidden="true">
+                <span class="door__frame"></span>
+                <span class="door__knob"></span>
+                <span class="sticker sticker--letter" style="--x:8%; --y:4%; --tilt:-8deg; --fill:#f6a821; --stroke:#1e2a4a;">A</span>
+                <span class="sticker sticker--emoji" style="--x:30%; --y:14%;">☁️</span>
+                <span class="sticker sticker--letter" style="--x:50%; --y:35%; --tilt:10deg; --fill:#c81e3c; --stroke:#1e2a4a;">B</span>
+                <span class="sticker sticker--letter" style="--x:14%; --y:56%; --tilt:-6deg; --fill:#e11d48; --stroke:#ffffff;">S</span>
+                <span class="sticker sticker--letter" style="--x:40%; --y:80%; --tilt:6deg; --fill:#f2b8a0; --stroke:#7c2d12;">K</span>
+              </div>
+
+              <div class="door__face door__face--back">
+                <span class="door__frame" aria-hidden="true"></span>
+                <span class="door__knob" aria-hidden="true"></span>
+                <div class="door__pictures" id="pictures-left" role="group" aria-label="Gambar pintu kiri"></div>
+              </div>
+
+              <button type="button" class="door__toggle" data-door="left"
+                      aria-label="Pintu kiri" aria-expanded="false" aria-controls="pictures-left"></button>
+            </div>
+
+            <!-- RIGHT DOOR: hinged on its right outer edge -->
+            <div class="door door--right" id="door-right">
+              <div class="door__face door__face--front" aria-hidden="true">
+                <span class="door__frame"></span>
+                <span class="door__knob"></span>
+                <span class="sticker sticker--emoji sticker--small" style="--x:8%; --y:8%; --tilt:-12deg;">⭐</span>
+                <span class="sticker sticker--letter" style="--x:60%; --y:3%; --tilt:8deg; --fill:#f97316; --stroke:#7f1d1d;">L</span>
+                <span class="sticker sticker--emoji" style="--x:30%; --y:15%;">☁️</span>
+                <span class="sticker sticker--letter" style="--x:10%; --y:33%; --tilt:-10deg; --fill:#f472b6; --stroke:#38bdf8;">A</span>
+                <span class="sticker sticker--letter" style="--x:60%; --y:52%; --tilt:6deg; --fill:#facc15; --stroke:#1f2937;">U</span>
+                <span class="sticker sticker--emoji sticker--big" style="--x:28%; --y:68%;">🍄</span>
+                <span class="sticker sticker--letter" style="--x:5%; --y:84%; --tilt:-8deg; --fill:#14b8a6; --stroke:#0f3d3a;">A</span>
+              </div>
+
+              <div class="door__face door__face--back">
+                <span class="door__frame" aria-hidden="true"></span>
+                <span class="door__knob" aria-hidden="true"></span>
+                <div class="door__pictures" id="pictures-right" role="group" aria-label="Gambar pintu kanan"></div>
+              </div>
+
+              <button type="button" class="door__toggle" data-door="right"
+                      aria-label="Pintu kanan" aria-expanded="false" aria-controls="pictures-right"></button>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="almari-hint">Sila buka almari!</p>
+      </div>
+      <!-- Teacher access (small, secondary) -->
+      <footer class="home-footer">
+        <a class="teacher-link" href="teacher.html">
+          <span aria-hidden="true">⚙️</span>
+          <span>Teacher Mode</span>
+        </a>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="suku-kata-db.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

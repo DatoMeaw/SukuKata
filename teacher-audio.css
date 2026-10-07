@@ -1,0 +1,111 @@
+/* ==========================================================
+   SUKU KATA — Teacher Mode: syllable voice controls
+   Only styles the recording controls under each syllable box.
+   Uses the same tokens and .t-btn buttons as teacher.css.
+   ========================================================== */
+
+.voice-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.voice-status {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-soft);
+}
+
+.voice-controls[data-state="recorded"] .voice-status,
+.voice-controls[data-state="playing"] .voice-status {
+  color: #15803d;
+}
+
+.voice-controls[data-state="recording"] .voice-status {
+  color: var(--color-danger-dark);
+  animation: voice-pulse 1s ease-in-out infinite;
+}
+
+.voice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.voice-btn {
+  flex: 1 1 auto;
+  padding-inline: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.voice-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
+.syllable-field .field__input[readonly] {
+  background-color: #f8f5ee;
+}
+
+@keyframes voice-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
+/* Narrow screens: stack the syllables so the buttons have room */
+@media (max-width: 560px) {
+  .syllable-inputs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .syllable-inputs__plus {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-controls[data-state="recording"] .voice-status {
+    animation: none;
+  }
+}
+
+/* ---------- Global feedback voice section ---------- */
+.t-feedback {
+  --accent: #7c3aed;
+  --accent-dark: #5b21b6;
+  --accent-soft: #f5f3ff;
+}
+
+.feedback-error {
+  margin-bottom: 1rem;
+}
+
+.feedback-voices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.feedback-voice {
+  padding: 0.85rem;
+  background-color: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.feedback-voice__title {
+  margin: 0 0 0.15rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+@media (min-width: 700px) {
+  .feedback-voices {
+    grid-template-columns: 1fr 1fr;
+  }
+}

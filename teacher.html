@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ec">
+  <meta name="robots" content="noindex">
+  <title>Teacher Mode — Suku Kata</title>
+  <link rel="stylesheet" href="teacher.css">
+  <link rel="stylesheet" href="teacher-audio.css">
+  <link rel="stylesheet" href="teacher-pin.css">
+</head>
+<body>
+
+  <!-- ===================== PIN SCREEN (shown first) ===================== -->
+  <section class="pin-gate" id="pin-gate" aria-labelledby="pin-title">
+    <form class="pin-card" id="pin-form" novalidate>
+      <p class="pin-card__icon" aria-hidden="true">🔒</p>
+      <h1 class="pin-card__title" id="pin-title">Teacher Mode</h1>
+      <p class="pin-card__msg">Masukkan PIN untuk masuk</p>
+
+      <div class="t-error" id="pin-error" role="alert" hidden></div>
+
+      <div class="pin-field">
+        <input class="field__input pin-input" id="pin-input" type="password"
+               inputmode="numeric" pattern="[0-9]*" maxlength="4"
+               autocomplete="off" aria-label="PIN 4 digit">
+        <button type="button" class="t-btn t-btn--ghost pin-toggle" id="pin-toggle"
+                aria-pressed="false">👁 Tunjuk</button>
+      </div>
+
+      <button type="submit" class="t-btn t-btn--primary">Masuk</button>
+      <a class="t-btn t-btn--ghost" href="index.html">← Kembali ke Student Mode</a>
+    </form>
+  </section>
+
+  <!-- Teacher Mode itself: hidden until the correct PIN is entered -->
+  <div class="t-app" id="t-app" hidden>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="t-header">
+      <a class="t-btn t-btn--ghost t-back" href="index.html">← Kembali ke Student Mode</a>
+
+      <div class="t-header__titles">
+        <h1 class="t-title">Teacher Mode</h1>
+        <p class="t-subtitle">Urus Kandungan Suku Kata</p>
+      </div>
+    </header>
+
+    <p class="t-notice" role="note">
+      <span aria-hidden="true">ℹ️</span>
+      Perubahan disimpan dalam pelayar ini dan digunakan dalam permainan murid.
+    </p>
+
+    <div class="t-toolbar">
+      <button type="button" class="t-btn t-btn--ghost" id="pin-change-open">⚙️ Tukar PIN</button>
+    </div>
+
+    <main class="t-main">
+
+      <!-- ===================== LEVEL: 2 SUKU KATA ===================== -->
+      <section class="t-section" data-level="2" aria-labelledby="heading-2">
+        <div class="t-section__head">
+          <div class="t-section__titles">
+            <span class="level-badge" aria-hidden="true">2</span>
+            <div>
+              <h2 class="t-section__title" id="heading-2">2 Suku Kata</h2>
+              <p class="t-section__count" id="count-2">0 perkataan</p>
+            </div>
+          </div>
+          <button type="button" class="t-btn t-btn--primary" data-action="add" data-level="2">
+            + Tambah Perkataan
+          </button>
+        </div>
+
+        <ul class="word-grid" id="list-2"></ul>
+      </section>
+
+      <!-- ===================== LEVEL: 3 SUKU KATA ===================== -->
+      <section class="t-section" data-level="3" aria-labelledby="heading-3">
+        <div class="t-section__head">
+          <div class="t-section__titles">
+            <span class="level-badge" aria-hidden="true">3</span>
+            <div>
+              <h2 class="t-section__title" id="heading-3">3 Suku Kata</h2>
+              <p class="t-section__count" id="count-3">0 perkataan</p>
+            </div>
+          </div>
+          <button type="button" class="t-btn t-btn--primary" data-action="add" data-level="3">
+            + Tambah Perkataan
+          </button>
+        </div>
+
+        <ul class="word-grid" id="list-3"></ul>
+      </section>
+
+      <!-- ===================== GLOBAL FEEDBACK VOICE ===================== -->
+      <section class="t-section t-feedback" id="feedback-section" aria-labelledby="heading-feedback">
+        <div class="t-section__head">
+          <div class="t-section__titles">
+            <span class="level-badge" aria-hidden="true">🎙️</span>
+            <div>
+              <h2 class="t-section__title" id="heading-feedback">Suara Maklum Balas</h2>
+              <p class="t-section__count">Suara guru untuk jawapan murid (semua perkataan)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-error feedback-error" id="feedback-error" role="alert" hidden></div>
+
+        <div class="feedback-voices">
+          <div class="feedback-voice">
+            <h3 class="feedback-voice__title">Jawapan Betul</h3>
+            <p class="field__hint">Contoh: "BETULLLL! PANDAIIII!"</p>
+            <div class="voice-controls" id="feedback-controls-correct"></div>
+          </div>
+
+          <div class="feedback-voice">
+            <h3 class="feedback-voice__title">Jawapan Salah</h3>
+            <p class="field__hint">Contoh: "KELIRUUU! CUBA LAGI!"</p>
+            <div class="voice-controls" id="feedback-controls-wrong"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===================== EDIT / ADD FORM ===================== -->
+  <dialog class="t-dialog" id="word-dialog" aria-labelledby="word-dialog-title">
+    <form class="t-form" id="word-form" novalidate>
+
+      <header class="t-dialog__head">
+        <h2 class="t-dialog__title" id="word-dialog-title">Edit Perkataan</h2>
+        <span class="t-dialog__tag" id="word-dialog-level">2 Suku Kata</span>
+      </header>
+
+      <div class="t-dialog__body">
+        <div class="t-error" id="form-error" role="alert" hidden></div>
+
+        <div class="field">
+          <label class="field__label" for="input-word">Perkataan:</label>
+          <input class="field__input" id="input-word" type="text"
+                 autocomplete="off" spellcheck="false" placeholder="Contoh: Bumi">
+        </div>
+
+        <fieldset class="field field--group">
+          <legend class="field__label">Suku kata:</legend>
+          <div class="syllable-inputs" id="syllable-inputs"></div>
+          <p class="syllable-preview" id="syllable-preview"></p>
+        </fieldset>
+
+        <!-- Full-word recording (filled in by teacher.js) -->
+        <div class="field word-voice" id="word-voice">
+          <span class="field__label">Perkataan: <span id="word-voice-name"></span></span>
+          <div class="voice-controls" id="word-voice-controls"></div>
+        </div>
+
+        <div class="field">
+          <span class="field__label">Gambar:</span>
+          <div class="picture-field">
+            <div class="picture-preview" id="picture-preview"></div>
+            <div class="picture-field__controls">
+              <label class="t-btn t-btn--ghost file-button" id="file-button">
+                <span aria-hidden="true">📷</span> Pilih Gambar
+                <input class="visually-hidden" id="input-image" type="file" accept="image/*">
+              </label>
+              <p class="field__hint">PNG atau JPG</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="t-dialog__foot">
+        <button type="button" class="t-btn t-btn--ghost" id="form-cancel">Batal</button>
+        <button type="submit" class="t-btn t-btn--primary">Simpan</button>
+      </footer>
+
+    </form>
+  </dialog>
+
+  <!-- ===================== DELETE CONFIRMATION ===================== -->
+  <dialog class="t-dialog t-dialog--small" id="delete-dialog" aria-labelledby="delete-dialog-title">
+    <div class="t-dialog__body t-confirm">
+      <p class="t-confirm__icon" aria-hidden="true">🗑️</p>
+      <h2 class="t-dialog__title" id="delete-dialog-title">Padam perkataan?</h2>
+      <p class="t-confirm__word" id="delete-word"></p>
+    </div>
+    <footer class="t-dialog__foot">
+      <button type="button" class="t-btn t-btn--ghost" id="delete-cancel">Batal</button>
+      <button type="button" class="t-btn t-btn--danger-solid" id="delete-confirm">Ya, Padam</button>
+    </footer>
+  </dialog>
+
+  <!-- ===================== CHANGE PIN ===================== -->
+  <dialog class="t-dialog t-dialog--small" id="pin-dialog" aria-labelledby="pin-dialog-title">
+    <form class="t-form" id="pin-change-form" novalidate>
+
+      <header class="t-dialog__head">
+        <h2 class="t-dialog__title" id="pin-dialog-title">Tukar PIN</h2>
+      </header>
+
+      <div class="t-dialog__body">
+        <div class="t-error" id="pin-change-error" role="alert" hidden></div>
+
+        <div class="field">
+          <label class="field__label" for="pin-current">PIN Semasa</label>
+          <input class="field__input pin-input" id="pin-current" type="password"
+                 inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="pin-new">PIN Baharu</label>
+          <input class="field__input pin-input" id="pin-new" type="password"
+                 inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="pin-confirm">Sahkan PIN Baharu</label>
+          <input class="field__input pin-input" id="pin-confirm" type="password"
+                 inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off">
+        </div>
+      </div>
+
+      <footer class="t-dialog__foot">
+        <button type="button" class="t-btn t-btn--ghost" id="pin-change-cancel">Batal</button>
+        <button type="submit" class="t-btn t-btn--primary">Simpan PIN</button>
+      </footer>
+
+    </form>
+  </dialog>
+
+  <!-- Short confirmation messages -->
+  <div class="t-toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="suku-kata-db.js" defer></script>
+  <script src="teacher.js" defer></script>
+  <script src="teacher-feedback.js" defer></script>
+</body>
+</html>

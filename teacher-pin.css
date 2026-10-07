@@ -1,0 +1,89 @@
+/* ==========================================================
+   SUKU KATA — Teacher Mode: PIN screen and "Tukar PIN"
+   Uses the same tokens and .t-btn / .field__input / .t-dialog
+   styles as teacher.css.
+   ========================================================== */
+
+/* ---------- PIN screen ---------- */
+.pin-gate {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding:
+    max(1rem, env(safe-area-inset-top))
+    max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom))
+    max(1rem, env(safe-area-inset-left));
+}
+
+.pin-gate[hidden] {
+  display: none;
+}
+
+.pin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: min(380px, 100%);
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  text-align: center;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-top: 6px solid var(--color-two);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(31, 42, 68, 0.12);
+}
+
+.pin-card__icon {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.pin-card__title {
+  margin: 0;
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--color-two-dark);
+}
+
+.pin-card__msg {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-text-soft);
+}
+
+.pin-field {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.pin-field .pin-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.pin-toggle {
+  flex: none;
+  padding-inline: 0.8rem;
+  font-size: 0.95rem;
+}
+
+/* The 4 digits: big, centred, spaced out */
+.pin-input {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  padding-left: calc(0.85rem + 0.35em); /* keeps the digits visually centred */
+}
+
+/* ---------- "Tukar PIN" button inside Teacher Mode ---------- */
+.t-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: -0.5rem 0 1.25rem;
+}
